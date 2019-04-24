@@ -1,0 +1,62 @@
+{
+  "ret": 0,
+  "content": [
+    {
+      "name": "模板名称",
+      "detail": {
+        "_id": "5c763a1f18c13f2ccc7853ef",
+        "title": "预约活动",
+        "keywords": "预约活动",
+        "describe": "预约活动",
+        "name": "预约活动",
+        "catalog": "sm",
+        "favicon": "preview/timg.jpg",
+        "parent_id": "0",
+        "template_id": 3,
+        "is_overSea": true,
+        "catalogLink": "/sm",
+        "have_page": false,
+        "is_page": false,
+        "__v": 0,
+        "isDelete": true
+      },
+      "setList": [
+      ],
+      "otherSetting": [],
+      "article": {
+        "total": 1,
+        "list": [
+          {
+            "_id": "5c763ba518c13f2ccc7853f2",
+            "wid": "5c763a1f18c13f2ccc7853ef",
+            "titleHead": "",
+            "img": "",
+            "abstract": "",
+            "isAbstract": true,
+            "text": "<p>1.공유 이벤트의 자세한 참여방법은 공식카페를 통하여 확인하실 수 있습니다.<br>2.쿠폰번호는 계정당 1회만 사용 가능합니다.<br>3.상품권 지급 방식은 공식카페에서 이벤트 공지를 통하여 확인하실 수 있습니다.<br>4.잘못된 휴대폰 번호 또는 휴대폰 번호가 변경된 경우 쿠폰 수령이 불가할 수 있습니다.<br>5.부적절한 방법으로 이벤트에 참여한 경우 당첨이 취소될 수 있습니다.<br>6.이벤트 기간 및 상품은 내부 사정으로 인하여 변경될 수 있습니다.</p>",
+            "isSetTop": 1,
+            "source": "",
+            "title": " 주의사항",
+            "keywords": "",
+            "describe": "",
+            "release": true,
+            "sort": 0,
+            "editTime": "2019-02-27T07:24:36.874Z",
+            "updateTime": "2019-02-27T07:26:29.952Z",
+            "uid": "270",
+            "editors": "魏小婉",
+            "__v": 0,
+            "isSetHome": [],
+            "column": [
+              "活动规则"
+            ]
+          }
+        ]
+      },
+      "img": [],
+      "banner":[],
+      "video": [
+      ]
+    }
+  ]
+}

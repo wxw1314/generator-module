@@ -1,0 +1,189 @@
+{
+  "id": 3,
+  "name": "模板名称",
+  "config": "index",
+  "is_overSea": true,
+  "version": "1.0.0",
+  "article": [
+    {
+      "name": "活动规则",
+      "config": "rules"
+    }
+  ],
+  "imgs": [
+    {
+      "name": "图片",
+      "config": "picture"
+    }
+  ],
+  "videos": [
+    {
+      "name": "视频",
+      "config": "video"
+    }
+  ],
+  "banner": [
+    {
+      "name": "移动-背景",
+      "config": "phone_bg"
+    }
+  ],
+  "settings": [
+    {"name":"youtubeID","config":"youtube","setConfig":[
+      {"name":"ID","config":{
+        "name":"youtube",
+        "content":"",
+        "display":true
+      }},
+      {"name":"图片","config":{
+        "name":"img",
+        "content":"",
+        "display":false
+      }}
+    ]}
+  ],
+  "otherSettings": [
+    {
+      "name": "校招_技术研发",
+      "config": "school_development",
+      "setConfig": [
+        {
+          "name": "岗位名称",
+          "config": {
+            "name": "name",
+            "display": true,
+            "require": true,
+            "content": ""
+          }
+        },
+        {
+          "name": "部门",
+          "config": {
+            "name": "department",
+            "display": true,
+            "require": true,
+            "content": ""
+          }
+        },
+        {
+          "name": "工作地点",
+          "config": {
+            "name": "place",
+            "display": false,
+            "require": true,
+            "content": ""
+          }
+        },
+        {
+          "name": "学历",
+          "config": {
+            "name": "education",
+            "display": false,
+            "require": true,
+            "content": ""
+          }
+        },
+        {
+          "name": "工作经验",
+          "config": {
+            "name": "background",
+            "display": false,
+            "require": true,
+            "content": ""
+          }
+        },
+        {
+          "name": "职位类型",
+          "config": {
+            "name": "type",
+            "display": false,
+            "require": true,
+            "content": ""
+          }
+        },
+        {
+          "name": "薪资",
+          "config": {
+            "name": "reward",
+            "display": false,
+            "require": true,
+            "content": ""
+          }
+        },
+        {
+          "name": "工作地址1",
+          "config": {
+            "name": "address1",
+            "display": false,
+            "require": false,
+            "content": ""
+          }
+        },
+        {
+          "name": "工作地址2",
+          "config": {
+            "name": "address2",
+            "display": false,
+            "require": false,
+            "content": ""
+          }
+        },
+        {
+          "name": "更新时间",
+          "config": {
+            "name": "updateTime",
+            "display": true,
+            "require": false,
+            "content": ""
+          }
+        },
+        {
+          "name": "岗位详情",
+          "config": {
+            "name": "text",
+            "display": false,
+            "require": true,
+            "content": ""
+          }
+        },
+        {
+          "name": "发布时间",
+          "config": {
+            "name": "time",
+            "display": true,
+            "require": false,
+            "content": ""
+          }
+        },
+        {
+          "name": "优先级排序",
+          "config": {
+            "name": "sort",
+            "display": true,
+            "require": false,
+            "content": ""
+          }
+        },
+
+        {
+          "name": "编辑人",
+          "config": {
+            "name": "editors",
+            "display": true,
+            "require": false,
+            "content": ""
+          }
+        },
+        {
+          "name": "是否发布",
+          "config": {
+            "name": "release",
+            "display": false,
+            "content": "false"
+          }
+        }
+      ],
+      "data": []
+    }
+  ]
+}

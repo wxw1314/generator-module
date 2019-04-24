@@ -1,0 +1,20 @@
+{
+  "name": "generator-cms-module",
+  "version": "1.1.11",
+  "description": "cms模板",
+  "files": [
+    "app"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "author": "wxw婉 <1420925256@qq.com>",
+  "license": "ISC",
+  "dependencies": {
+    "yeoman-generator": "^3.2.0"
+  }
+}
