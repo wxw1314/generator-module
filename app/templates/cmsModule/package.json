@@ -1,5 +1,5 @@
 {
-  "name": "模板名称",
+  "name": "moduleName",
   "version": "1.0.1",
   "description": "模板描述",
   "main": "index.js",

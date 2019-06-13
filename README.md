@@ -15,3 +15,4 @@ npm install --global yo
 
 
 * 2019.04.24 增加了babel配置
+* 2019.05.28 增加了eslint规范

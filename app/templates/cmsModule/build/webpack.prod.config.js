@@ -15,20 +15,22 @@ const prodconfig = {
   output: {
     path: path.resolve(__dirname, `${filePath}../dist/${catalogLink}`),
     filename: config.assetsPath('js/[name].[chunkhash].js'),
-    chunkFilename: config.assetsPath('js/[id].[chunkhash].js'),
+    chunkFilename: config.assetsPath('js/[id].[chunkhash].js')
   },
   plugins: [
     new ExtractTextPlugin({
-      filename: config.assetsPath('css/[name].[hash:8].css'),
+      filename: config.assetsPath('css/[name].[hash:8].css')
     })
   ],
   module: {
-    rules: [{
+    rules: [
+      {
         test: /\.css/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: [{
-              loader: 'css-loader',
+          use: [
+            {
+              loader: 'css-loader'
             },
             {
               loader: 'postcss-loader',
@@ -41,21 +43,23 @@ const prodconfig = {
                       '> 1%',
                       'iOS 7',
                       'last 3 iOS versions',
-                      'last 2 versions',
-                    ],
-                  }),
-                ],
-              },
-            },
+                      'last 2 versions'
+                    ]
+                  })
+                ]
+              }
+            }
           ],
-          publicPath,
-        }),
-      }, {
+          publicPath
+        })
+      },
+      {
         test: /\.less$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: [{
-              loader: 'css-loader',
+          use: [
+            {
+              loader: 'css-loader'
             },
             {
               loader: 'postcss-loader',
@@ -68,25 +72,26 @@ const prodconfig = {
                       '> 1%',
                       'iOS 7',
                       'last 3 iOS versions',
-                      'last 2 versions',
-                    ],
-                  }),
-                ],
-              },
+                      'last 2 versions'
+                    ]
+                  })
+                ]
+              }
             },
             {
-              loader: 'less-loader',
-            },
+              loader: 'less-loader'
+            }
           ],
-          publicPath,
-        }),
+          publicPath
+        })
       },
       {
         test: /\.scss/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: [{
-              loader: 'css-loader',
+          use: [
+            {
+              loader: 'css-loader'
             },
             {
               loader: 'postcss-loader',
@@ -99,20 +104,20 @@ const prodconfig = {
                       '> 1%',
                       'iOS 7',
                       'last 3 iOS versions',
-                      'last 2 versions',
-                    ],
-                  }),
-                ],
-              },
+                      'last 2 versions'
+                    ]
+                  })
+                ]
+              }
             },
             {
-              loader: 'sass-loader',
-            },
+              loader: 'sass-loader'
+            }
           ],
-          publicPath,
-        }),
+          publicPath
+        })
       }
-    ],
+    ]
   },
   performance: {
     hints: 'warning',
@@ -120,16 +125,16 @@ const prodconfig = {
     maxEntrypointSize: 500000,
     assetFilter(assetFilename) {
       return assetFilename.endsWith('.css') || assetFilename.endsWith('.js');
-    },
+    }
   },
   optimization: {
     splitChunks: {
       minSize: 0,
       minChunks: 2,
       chunks: 'initial',
-      name: 'common',
-    },
-  },
+      name: 'common'
+    }
+  }
 };
 
 module.exports = async () => {
@@ -139,8 +144,7 @@ module.exports = async () => {
   //导入配置
   const basewebpackconfig = await require('./webpack.base.config');
   const plugins = await require('./webpack.extend.config');
-  // console.log(plugins)
-  const r = function () {
+  const r = function() {
     for (const plugin of plugins) {
       prodconfig.plugins.push(plugin);
     }

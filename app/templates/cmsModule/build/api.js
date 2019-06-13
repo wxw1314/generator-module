@@ -17,7 +17,10 @@ let pubilcUrl = '';
 function ROOTURL() {
   const URL = {};
   console.log(`环境变量${process.env.NODE_ENV}`);
-  if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'default') {
+  if (
+    process.env.NODE_ENV === 'production' ||
+    process.env.NODE_ENV === 'default'
+  ) {
     URL.baseURL = buildUrl;
   } else {
     URL.baseURL = devUrl;
@@ -33,22 +36,30 @@ axios.interceptors.request.use(
     if (config.method == 'post') {
       config.data = {
         ...config.data
-      }
+      };
     } else if (config.method == 'get') {
       config.params = {
         ...config.params
-      }
+      };
     }
-    return config
+    return config;
   },
-  function (error) {
-    return Promise.reject(error)
+  function(error) {
+    return Promise.reject(error);
   }
 );
 module.exports = {
-  isChange:false,
-  entryHtml:'index.html',
-  getData: (id, build_url, dev_url,pubilc_url, catalogLink, root, moduleName) => {
+  isChange: false,
+  entryHtml: 'index.html',
+  getData: (
+    id,
+    build_url,
+    dev_url,
+    pubilc_url,
+    catalogLink,
+    root,
+    moduleName
+  ) => {
     this.wid = id;
     buildUrl = build_url;
     devUrl = dev_url;
@@ -64,7 +75,7 @@ module.exports = {
     return buildUrl;
   },
   //获取静态文件路径
-  getPubilcUrl:()=>{
+  getPubilcUrl: () => {
     return pubilcUrl;
   },
   //获取打包出口路径
@@ -83,5 +94,5 @@ module.exports = {
     } else {
       return axios.get('WebSite_AllData?wid=' + this.wid, ROOTURL());
     }
-  },
+  }
 };
