@@ -1,6 +1,10 @@
 let Generator  = require('yeoman-generator');
 
 module.exports = class extends Generator {
+  constructor(args, opts) {
+    // 调用超级构造函数很重要，我们的生成器将被正确设置
+    super(args, opts);
+  }
   prompting(){
     var questions = [
       {
@@ -29,11 +33,38 @@ module.exports = class extends Generator {
         }
       }.bind(this));
   }
+  initializing() {
+    this.log("开始构建项目...");
+  }
   writing(){
     //模板
     this.fs.copy(
       this.templatePath('cmsModule/'),
       this.destinationPath('')
+    );
+    this.fs.copy(
+      this.templatePath("babelrc_tmpl"),
+      this.destinationPath(".babelrc")
+    );
+    this.fs.copy(
+      this.templatePath("eslintrc_tmpl.js"),
+      this.destinationPath(".eslintrc.js")
+    );
+    this.fs.copy(
+      this.templatePath("gitignore_tmpl"),
+      this.destinationPath(".gitignore")
+    );
+    this.fs.copy(
+      this.templatePath("npmrc_tmpl"),
+      this.destinationPath(".npmrc")
+    );
+    this.fs.copy(
+      this.templatePath("editorconfig_tmpl"),
+      this.destinationPath(".editorconfig")
+    );
+    this.fs.copy(
+      this.templatePath("eslintignore_tmpl"),
+      this.destinationPath(".eslintignore")
     );
   }
 }

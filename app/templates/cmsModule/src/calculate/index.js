@@ -1,23 +1,32 @@
-'use strict';
-// 数据处理
-const methods = require('./common');
-function calculate(pubilcUrl, content) {
-  if(content.data.ret !==0){
-    throw new Error(`服务器接口报错~`);
+/**
+ *
+ * 对应页面数据处理文件
+ * @param <String> pubilcUrl 静态文件的地址
+ * @param <Object> content 后台接口返回的所有数据
+ * @return <Object> 返回对应页面注入的数据
+ *
+ * */
+
+// 引进公共方法文件
+// const methods = require('../common/common.js');
+
+module.exports = (pubilcUrl, content) => {
+  if (content.data.ret !== 0) {
+    throw new Error('服务器接口报错~');
   }
-  let data = content.data.content[0];
+  const data = content.data.content[0];
   const json = {};
 
-  //detail
+  // detail
   json.detail = {};
-  //detail处理,页面站点基本信息检查
+  // detail处理,页面站点基本信息检查
   if (data.detail.favicon) {
     data.detail.favicon = pubilcUrl + data.detail.favicon;
   }
 
   json.detail = data.detail;
 
-  //img模块处理例子处理
+  // img模块处理例子处理
   // if (data.img.length !== 0) {
   //   for (let i = 0; i < data.img.length; i++) {
   //     //过滤未发布
@@ -45,7 +54,7 @@ function calculate(pubilcUrl, content) {
   //   throw new Error(`请先编辑图片再进行打包~`)
   // }
 
-  //article处理
+  // article处理
   // if (data.article.total !== 0 && data.article.list.length !== 0) {
   //   let list = data.article.list;
   //   //先过滤未发布的文章
@@ -60,7 +69,7 @@ function calculate(pubilcUrl, content) {
   // } else {
   //   throw new Error(`请编辑文章管理>>活动规则~`);
   // }
-  //video处理
+  // video处理
   // let videolist = data.video;
   // //先过滤未发布的视屏
   // if (videolist.length === 0) {
@@ -79,7 +88,7 @@ function calculate(pubilcUrl, content) {
   //   json.video.push(videolist[i])
   // }
 
-  //banner处理
+  // banner处理
   // if (data.banner.length !== 0) {
   //   for (let i = 0; i < data.banner.length; i++) {
   //     //过滤未发布
@@ -112,7 +121,7 @@ function calculate(pubilcUrl, content) {
   // } else {
   //   throw new Error(`请编辑>>BANNER~`);
   // }
-  //settings处理
+  // settings处理
   // if (data.setList.length !== 0) {
   //   for (let i = 0; i < data.setList.length; i++) {
   //     //过滤未发布
@@ -160,7 +169,4 @@ function calculate(pubilcUrl, content) {
   //   }
   // }
   return json;
-}
-
-
-module.exports = calculate;
+};

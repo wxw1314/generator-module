@@ -18,14 +18,14 @@ module.exports = async () => {
     devtool: '#source-map',
     devServer: {
       contentBase: false,
-      publicPath: config.ConfigSetting.dev.assetsPublicPath,
+      publicPath: config.dev.assetsPublicPath,
       historyApiFallback: true,
       inline: true,
       hot: true,
       compress: true,
-      open: config.ConfigSetting.dev.autoOpenBrowser,
-      host: config.ConfigSetting.dev.host,
-      port: config.ConfigSetting.dev.port,
+      open: config.dev.autoOpenBrowser,
+      host: config.dev.host,
+      port: config.dev.port,
       quiet: true,
     },
     module: {
@@ -75,7 +75,7 @@ module.exports = async () => {
       }
       devconfig.plugins.push(new FriendlyErrorsPlugin({
         compilationSuccessInfo: {
-          messages: [`点击打开:http://${ config.ConfigSetting.dev.host}:${ config.ConfigSetting.dev.port}`],
+          messages: [`点击打开:http://${ config.dev.host}:${ config.dev.port}`],
         },
       }))
       return devconfig;

@@ -6,19 +6,18 @@ const path = require('path');
 const chalk = require('chalk');
 const spinner = ora('building for production...\n');
 const webpack = require('webpack');
-
 const config = require('../config/index');
 const api = require(`./api`);
 
 async function buildWeb() {
   // 在模板的api中传入网站id:wid和token
   await api.getData(
-    config.wid,
-    config.buildUrl,
-    config.devUrl,
-    config.pubilcUrl,
-    config.catalogLink,
-    config.root
+    config.build.wid,
+    config.build.buildUrl,
+    config.build.devUrl,
+    config.build.pubilcUrl,
+    config.build.catalogLink,
+    config.build.root
   );
   spinner.start();
   // 打包前删除文件夹
@@ -28,7 +27,6 @@ async function buildWeb() {
       __dirname,
       `./webpack.prod.config`
     ))();
-    // console.log(webpackConfig);
     await webpack(webpackConfig, (err, stats) => {
       if (err) throw err;
       process.stdout.write(

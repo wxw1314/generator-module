@@ -1,15 +1,9 @@
-/* eslint-disable linebreak-style */
 'use strict';
 const path = require('path');
-const config = require('./index');
-const glob = require('glob');
-const buildUrl = 'http://120.92.182.196/';
-const devUrl = 'http://120.92.182.196/';
-const pubilcUrl = 'http://120.92.182.196/public/upload/overseas/';
 const wid = '5c9230bf26c016002a92fa5e';
 const catalogLink = '';
 const root = './';
-const ConfigSetting = {
+module.exports = {
   dev: {
     // 线上的根目录
     assetsPublicPath: '/',
@@ -22,7 +16,16 @@ const ConfigSetting = {
 
     // 主机、端口号
     host: 'localhost',
-    port: 3000
+    port: 3000,
+    // 开启eslint
+    showEslintErrorsInOverlay:false,
+    useEslint:true,
+    // 开发环境的配置路径
+    devUrl: 'http://120.92.182.196/',
+    pubilcUrl: 'http://120.92.182.196/public/upload/overseas/',
+    wid,
+    root,
+    catalogLink,
   },
 
   build: {
@@ -35,36 +38,14 @@ const ConfigSetting = {
     // 静态资源目录
     assetsSubDirectory: '',
 
-    productionSourceMap: true
+    productionSourceMap: true,
+
+    buildUrl: 'http://120.92.182.196/',
+    // 开发环境的配置路径
+    pubilcUrl: 'http://120.92.182.196/public/upload/overseas/',
+    wid,
+    root,
+    catalogLink,
   }
-};
-exports.buildUrl = buildUrl;
-exports.devUrl = devUrl;
-exports.pubilcUrl = pubilcUrl;
-exports.wid = wid;
-exports.catalogLink = catalogLink;
-exports.root = root;
-exports.ConfigSetting = ConfigSetting;
-exports.assetsPath = function(_path) {
-  const assetsSubDirectory =
-    process.env.NODE_ENV === 'production' || 'default'
-      ? config.ConfigSetting.build.assetsSubDirectory
-      : config.ConfigSetting.dev.assetsSubDirectory;
-  const p = `${assetsSubDirectory}${_path}`;
-  return p;
 };
 
-exports.getentry = filepath => {
-  const entries = {};
-  try {
-    glob.sync(filepath).forEach(file => {
-      const basename = path.basename(file, path.extname(file));
-      entries[basename] = file;
-    });
-  } catch (e) {
-    console.log(e);
-    throw e;
-  }
-  // console.log(entries)
-  return entries;
-};

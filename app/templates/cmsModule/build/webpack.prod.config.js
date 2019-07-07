@@ -3,23 +3,23 @@
 const path = require('path');
 const merge = require('webpack-merge');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
+const utils = require('./utils')
 const config = require('../config/index');
 const api = require('./api');
 const catalogLink = api.getcatalogLink();
 const filePath = api.getRoot();
-const publicPath = config.ConfigSetting.build.assetsPublicPath;
+const publicPath = config.build.assetsPublicPath;
 // 生产环境的基本配置
 const prodconfig = {
   mode: 'production',
   output: {
     path: path.resolve(__dirname, `${filePath}../dist/${catalogLink}`),
-    filename: config.assetsPath('js/[name].[chunkhash].js'),
-    chunkFilename: config.assetsPath('js/[id].[chunkhash].js')
+    filename: utils.assetsPath('js/[name].[chunkhash].js'),
+    chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
   },
   plugins: [
     new ExtractTextPlugin({
-      filename: config.assetsPath('css/[name].[hash:8].css')
+      filename: utils.assetsPath('css/[name].[hash:8].css')
     })
   ],
   module: {

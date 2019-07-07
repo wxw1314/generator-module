@@ -2,12 +2,10 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const _ = require('lodash');
-
+const utils = require('./utils');
 const api = require('./api');
 const config = require('../config/index');
-
-const date = require('./calculate/common');
-const plugins = [];
+let plugins = [];
 class methods {
   //考虑到文件夹太多，有关联的页面可以整理到统一文件夹下
   /*普通页面
@@ -42,12 +40,12 @@ module.exports = (async () => {
     if (process.env.NODE_ENV === 'development') {
       //初始化配置数据
       await api.getData(
-        config.wid,
-        config.buildUrl,
-        config.devUrl,
-        config.pubilcUrl,
-        config.catalogLink,
-        config.root
+        config.dev.wid,
+        config.build.buildUrl,
+        config.dev.devUrl,
+        config.dev.pubilcUrl,
+        config.dev.catalogLink,
+        config.dev.root
       );
     }
     // 静态文件，例如图片的地址
@@ -55,17 +53,22 @@ module.exports = (async () => {
     // 调用接口获取该网站下的所有数据
     const data = await api.WebSite_AllData();
     // 删除缓存
-    delete require.cache[require.resolve('./calculate/index.js')];
+    // delete require.cache[require.resolve('./calculate/index.js')];
     // 引进处理过的数据，数据处理可以看./calculate/index文件
-    const calculate_activity = require('./calculate/index');
-    const data_activity = calculate_activity(pubilcUrl, data);
+    // const calculate_activity = require('../src/calculate/index');
+    // const data_activity = calculate_activity(pubilcUrl, data);
     // 获取../src/page下的所有html页面
-    const activity_ = config.getentry(
+    const pages = utils.getentry(
       path.resolve(__dirname, '../src/page/**/*.html')
     );
     // 把数据注入一个一个的页面中
-    for (const page in activity_) {
-      methods.Pushpage(`${activity_[page]}`, `${page}`, data_activity);
+    for (const page in pages) {
+      // 删除缓存
+      delete require.cache[require.resolve(`../src/calculate/${page}`)];
+      // 引进处理过的数据，数据处理可以看./calculate/index文件
+      const calculateIndex = require(`../src/calculate/${page}`);
+      const dataIndex = calculateIndex(pubilcUrl, data);
+      methods.Pushpage(`${pages[page]}`, `${page}`, dataIndex);
     }
     // 返回plugins，在页面中可以使用该模板对页面进行数据的渲染
     return plugins;
