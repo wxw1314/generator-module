@@ -5,7 +5,6 @@ const baseentry = path.resolve(__dirname, '../src/entry/**/*.js');
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
-
 const createLintingRule = () => ({
   test: /\.(js|vue)$/,
   loader: 'eslint-loader',
@@ -16,6 +15,7 @@ const createLintingRule = () => ({
     emitWarning: !config.dev.showEslintErrorsInOverlay
   }
 })
+
 module.exports = {
   entry: utils.getentry(baseentry),
   output: {
@@ -25,7 +25,9 @@ module.exports = {
         ? config.build.assetsPublicPath
         : config.dev.assetsPublicPath
   },
-  extensions: ['', '.js', '.jsx', '.scss'],
+  resolve: {
+    extensions: ['.js', '.vue', '.json'],
+  },
   module: {
     rules: [
       ...(config.dev.useEslint ? [createLintingRule()] : []),
