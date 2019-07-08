@@ -1,4 +1,3 @@
-/* eslint-disable strict */
 'use strict';
 process.env.NODE_ENV = 'development';
 const merge = require('webpack-merge');
@@ -26,7 +25,7 @@ module.exports = async () => {
       open: config.dev.autoOpenBrowser,
       host: config.dev.host,
       port: config.dev.port,
-      quiet: true,
+      quiet: true
     },
     module: {
       rules: [
@@ -37,29 +36,31 @@ module.exports = async () => {
             {
               loader: 'css-loader',
               options: {
-                importLoaders: 1,
-              },
+                importLoaders: 1
+              }
+            }
+          ]
+        },
+        {
+          test: /\.less$/,
+          use: [
+            'style-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 1
+              }
             },
-          ],
-        },{
-        test: /\.less$/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
-            },
-          },
-          'less-loader',
-        ],
-      }],
+            'less-loader'
+          ]
+        }
+      ]
     },
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NamedModulesPlugin(),
-      new webpack.NoEmitOnErrorsPlugin(),
-    ],
+      new webpack.NoEmitOnErrorsPlugin()
+    ]
   };
   try {
     //清除缓存
@@ -69,24 +70,26 @@ module.exports = async () => {
     //生成的HtmlWebpackPlugin对象数组
     const plugins = await require('./webpack.extend.config');
     // console.log(plugins)
-    let result = function () {
+    let result = function() {
       for (let plugin of plugins) {
-        devconfig.plugins.push(plugin)
+        devconfig.plugins.push(plugin);
       }
-      devconfig.plugins.push(new FriendlyErrorsPlugin({
-        compilationSuccessInfo: {
-          messages: [`点击打开:http://${ config.dev.host}:${ config.dev.port}`],
-        },
-      }))
+      devconfig.plugins.push(
+        new FriendlyErrorsPlugin({
+          compilationSuccessInfo: {
+            messages: [`点击打开:http://${config.dev.host}:${config.dev.port}`]
+          }
+        })
+      );
       return devconfig;
-    }
+    };
     const obj = await merge(basewebpackconfig, result());
     return obj;
   } catch (e) {
     console.log('>>>>>>>>>>>>>>>>>>>>>>');
     console.log(chalk.red(`${e}`));
     console.log('>>>>>>>>>>>>>>>>>>>>>>');
-    throw e
+    throw e;
   } finally {
     spinner.stop();
   }

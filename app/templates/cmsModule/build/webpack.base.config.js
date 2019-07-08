@@ -2,8 +2,8 @@ const path = require('path');
 const utils = require('./utils');
 const config = require('../config/index');
 const baseentry = path.resolve(__dirname, '../src/entry/**/*.js');
-function resolve (dir) {
-  return path.join(__dirname, '..', dir)
+function resolve(dir) {
+  return path.join(__dirname, '..', dir);
 }
 const createLintingRule = () => ({
   test: /\.(js|vue)$/,
@@ -14,7 +14,7 @@ const createLintingRule = () => ({
     formatter: require('eslint-friendly-formatter'),
     emitWarning: !config.dev.showEslintErrorsInOverlay
   }
-})
+});
 
 module.exports = {
   entry: utils.getentry(baseentry),
@@ -26,7 +26,7 @@ module.exports = {
         : config.dev.assetsPublicPath
   },
   resolve: {
-    extensions: ['.js', '.vue', '.json'],
+    extensions: ['.js', '.vue', '.json']
   },
   module: {
     rules: [

@@ -17,15 +17,15 @@ module.exports = {
     // 主机、端口号
     host: 'localhost',
     port: 3000,
-    // 开启eslint
-    showEslintErrorsInOverlay:false,
-    useEslint:true,
+    // 开启eslint(必须开启)
+    showEslintErrorsInOverlay: false,
+    useEslint: true,
     // 开发环境的配置路径
     devUrl: 'http://120.92.182.196/',
     pubilcUrl: 'http://120.92.182.196/public/upload/overseas/',
     wid,
     root,
-    catalogLink,
+    catalogLink
   },
 
   build: {
@@ -41,11 +41,10 @@ module.exports = {
     productionSourceMap: true,
 
     buildUrl: 'http://120.92.182.196/',
-    // 开发环境的配置路径
+    // 生产环境的配置路径
     pubilcUrl: 'http://120.92.182.196/public/upload/overseas/',
     wid,
     root,
-    catalogLink,
+    catalogLink
   }
 };
-

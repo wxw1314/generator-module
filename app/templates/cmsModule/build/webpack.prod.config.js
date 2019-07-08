@@ -1,9 +1,8 @@
-/* eslint-disable no-unused-vars */
 'use strict';
 const path = require('path');
 const merge = require('webpack-merge');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const utils = require('./utils')
+const utils = require('./utils');
 const config = require('../config/index');
 const api = require('./api');
 const catalogLink = api.getcatalogLink();
