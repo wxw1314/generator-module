@@ -41,7 +41,7 @@ module.exports = {
         }
       },
       {
-        test: /\.(png|jpg|gif|ico)$/,
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         use: [
           {
             loader: 'url-loader',
@@ -63,6 +63,14 @@ module.exports = {
             }
           }
         ]
+      },
+      {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
+        }
       },
       {
         test: /\.(html|ejs)$/,
