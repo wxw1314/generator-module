@@ -34,7 +34,7 @@ class methods {
 
 module.exports = (async () => {
   //打包路径
-  let pubilcUrl = '';
+  let publicUrl = '';
   try {
     //本地开发环境
     if (process.env.NODE_ENV === 'development') {
@@ -43,32 +43,31 @@ module.exports = (async () => {
         config.dev.wid,
         config.build.buildUrl,
         config.dev.devUrl,
-        config.dev.pubilcUrl,
+        config.dev.publicUrl,
         config.dev.catalogLink,
         config.dev.root
       );
     }
     // 静态文件，例如图片的地址
-    pubilcUrl = api.getPubilcUrl();
+    publicUrl = api.getPublicUrl();
     // 调用接口获取该网站下的所有数据
     const data = await api.WebSite_AllData();
-    // 删除缓存
-    // delete require.cache[require.resolve('./calculate/index.js')];
-    // 引进处理过的数据，数据处理可以看./calculate/index文件
-    // const calculate_activity = require('../src/calculate/index');
-    // const data_activity = calculate_activity(pubilcUrl, data);
-    // 获取../src/page下的所有html页面
-    const pages = utils.getentry(
-      path.resolve(__dirname, '../src/page/**/*.html')
+    // 获取cms环境
+    const cmsEnv = api.getCmsEnv();
+    const calculatePages = utils.getentry(
+      path.resolve(__dirname, '../src/page/*/')
     );
     // 把数据注入一个一个的页面中
-    for (const page in pages) {
+    for (const calPage in calculatePages) {
       // 删除缓存
-      delete require.cache[require.resolve(`../src/calculate/${page}`)];
+      delete require.cache[require.resolve(`../src/calculate/${calPage}`)];
       // 引进处理过的数据，数据处理可以看./calculate/index文件
-      const calculateIndex = require(`../src/calculate/${page}`);
-      const dataIndex = calculateIndex(pubilcUrl, data);
-      methods.Pushpage(`${pages[page]}`, `${page}`, dataIndex);
+      const calculateIndex = require(`../src/calculate/${calPage}`);
+      const dataIndex = calculateIndex(publicUrl, data, cmsEnv);
+      const pages = utils.getentry(calculatePages[calPage] + '/*');
+      for (const page in pages) {
+        methods.Pushpage(`${pages[page]}`, `${page}`, dataIndex);
+      }
     }
     // 返回plugins，在页面中可以使用该模板对页面进行数据的渲染
     return plugins;

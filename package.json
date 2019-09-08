@@ -1,6 +1,6 @@
 {
   "name": "generator-cms-module",
-  "version": "1.2.15",
+  "version": "1.2.16",
   "description": "cms模板",
   "files": [
     "app"

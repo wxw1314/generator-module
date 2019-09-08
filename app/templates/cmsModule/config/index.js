@@ -19,7 +19,7 @@ module.exports = {
     port: 3000,
     // 开启eslint(必须开启)
     showEslintErrorsInOverlay: false,
-    useEslint: true,
+    useEslint: false,
     // 开发环境的配置路径
     devUrl: 'http://120.92.182.196/',
     pubilcUrl: 'http://120.92.182.196/public/upload/overseas/',
