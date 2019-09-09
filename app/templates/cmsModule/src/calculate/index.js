@@ -1,7 +1,7 @@
 /**
  *
  * 对应页面数据处理文件
- * @param <String> pubilcUrl 静态文件的地址
+ * @param <String> publicUrl 静态文件的地址
  * @param <Object> content 后台接口返回的所有数据
  * @return <Object> 返回对应页面注入的数据
  *
@@ -10,7 +10,7 @@
 // 引进公共方法文件
 // const methods = require('../common/common.js');
 
-module.exports = (pubilcUrl, content) => {
+module.exports = (publicUrl, content) => {
   if (content.data.ret !== 0) {
     throw new Error('服务器接口报错~');
   }
@@ -21,7 +21,7 @@ module.exports = (pubilcUrl, content) => {
   json.detail = {};
   // detail处理,页面站点基本信息检查
   if (data.detail.favicon) {
-    data.detail.favicon = pubilcUrl + data.detail.favicon;
+    data.detail.favicon = publicUrl + data.detail.favicon;
   }
 
   json.detail = data.detail;
@@ -31,8 +31,8 @@ module.exports = (pubilcUrl, content) => {
   //   for (let i = 0; i < data.img.length; i++) {
   //     //过滤未发布
   //     if (!data.img[i].release) continue;
-  //     data.img[i].img = pubilcUrl + data.img[i].img;
-  //     data.img[i].icon = pubilcUrl + data.img[i].icon;
+  //     data.img[i].img = publicUrl + data.img[i].img;
+  //     data.img[i].icon = publicUrl + data.img[i].icon;
   //     data.img[i].updateTime = methods.arcticletimechange(data.img[i].updateTime);
   //     switch (data.img[i].type) {
   //       case ('PC-滑动提示'):
@@ -78,12 +78,12 @@ module.exports = (pubilcUrl, content) => {
   // for (let i = 0; i < videolist.length; i++) {
   //   if (!videolist[i].release)
   //     continue;
-  //   videolist[i].img = pubilcUrl + videolist[i].img;
+  //   videolist[i].img = publicUrl + videolist[i].img;
   //   //如果有本地的链接则拿本地的链接
   //   if (videolist[i].file === '') {
   //     videolist[i].video_link = videolist[i].url;
   //   } else {
-  //     videolist[i].video_link = pubilcUrl + videolist[i].file;
+  //     videolist[i].video_link = publicUrl + videolist[i].file;
   //   }
   //   json.video.push(videolist[i])
   // }
@@ -97,10 +97,10 @@ module.exports = (pubilcUrl, content) => {
   //       throw new Error(`请编辑BANNER>>${data.banner[i].type}~`)
   //     }
   //     if (data.banner[i].img !== '') {
-  //       data.banner[i].img = pubilcUrl + data.banner[i].img;
+  //       data.banner[i].img = publicUrl + data.banner[i].img;
   //     }
   //     if (data.banner[i].video !=='') {
-  //       data.banner[i].video = pubilcUrl + data.banner[i].video;
+  //       data.banner[i].video = publicUrl + data.banner[i].video;
   //     }
   //     switch (data.banner[i].type) {
   //       case ('移动-背景'):

@@ -22,7 +22,7 @@ module.exports = {
     useEslint: false,
     // 开发环境的配置路径
     devUrl: 'http://120.92.182.196/',
-    pubilcUrl: 'http://120.92.182.196/public/upload/overseas/',
+    publicUrl: 'http://120.92.182.196/public/upload/overseas/',
     wid,
     root,
     catalogLink
@@ -42,7 +42,7 @@ module.exports = {
 
     buildUrl: 'http://120.92.182.196/',
     // 生产环境的配置路径
-    pubilcUrl: 'http://120.92.182.196/public/upload/overseas/',
+    publicUrl: 'http://120.92.182.196/public/upload/overseas/',
     wid,
     root,
     catalogLink
