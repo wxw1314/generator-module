@@ -23,10 +23,7 @@
     "sass-loader": "^7.0.3",
     "style-loader": "^0.21.0",
     "webpack": "^4.15.1",
-    "webpack-dev-server": "^3.1.4",
-    "eslint": "^5.16.0",
-    "eslint-config-airbnb-base": "^13.2.0",
-    "eslint-plugin-import": "^2.18.0"
+    "webpack-dev-server": "^3.1.4"
   },
   "dependencies": {
     "ajax": "0.0.4",
@@ -39,10 +36,6 @@
     "ejs": "^2.6.1",
     "ejs-compiled-loader": "^2.2.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
-    "eslint-friendly-formatter": "^4.0.1",
-    "eslint-import-resolver-webpack": "^0.11.1",
-    "eslint-loader": "^2.2.1",
-    "eslint-plugin-html": "^6.0.0",
     "friendly-errors-webpack-plugin": "^1.7.0",
     "fs": "0.0.1-security",
     "handlebars-template-loader": "^1.0.0",
