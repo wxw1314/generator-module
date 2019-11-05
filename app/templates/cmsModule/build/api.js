@@ -4,12 +4,6 @@
 // 3，buildUrl:打包域名
 // 4，devUrl：预览域名
 const axios = require('axios');
-const log4js = require('log4js');
-log4js.configure({
-  appenders: { api: { type: 'file', filename: 'log/api.log' } },
-  categories: { default: { appenders: ['api'], level: 'info' } }
-});
-const logger = log4js.getLogger();
 // 调用axios时访问，加入头部header
 axios.interceptors.request.use(
   config => {
@@ -25,14 +19,14 @@ axios.interceptors.request.use(
     }
     return config;
   },
-  function (error) {
+  function(error) {
     return Promise.reject(error);
   }
 );
 module.exports = {
   isChange: false,
   entryHtml: 'index.html',
-  getData (id, build_url, dev_url, public_url, catalogLink, root, moduleName) {
+  getData(id, build_url, dev_url, public_url, catalogLink, root, moduleName) {
     this.wid = id;
     this.buildUrl = build_url;
     this.devUrl = dev_url;
@@ -40,30 +34,28 @@ module.exports = {
     this.catalogLink = catalogLink;
     this.root = root;
     this.moduleName = moduleName;
-    logger.info(`接受到的打包路径${this.buildUrl}`);
   },
   //获取打包出口路径
-  getBuildUrl () {
-    logger.info(`打包路径${this.buildUrl}`);
+  getBuildUrl() {
     return this.buildUrl;
   },
   //获取静态文件路径
-  getPublicUrl () {
+  getPublicUrl() {
     return this.publicUrl;
   },
   //获取打包出口路径
-  getcatalogLink () {
+  getcatalogLink() {
     return this.catalogLink;
   },
   // 获取打包路径
-  getRoot () {
+  getRoot() {
     return this.root;
   },
   // 获取cms环境（测试环境：dev_online，正式环境：prod_online）
-  getCmsEnv () {
+  getCmsEnv() {
     return process.env.ENV_ONLINE;
   },
-  ROOTURL () {
+  ROOTURL() {
     const URL = {};
     console.log(`环境变量${process.env.NODE_ENV}`);
     if (
@@ -74,12 +66,10 @@ module.exports = {
     } else {
       URL.baseURL = this.devUrl;
     }
-    // console.log(URL)
-    logger.info(`地址${this.buildUrl}`);
     return URL;
   },
   // 网站的所有数据
-  WebSite_AllData () {
+  WebSite_AllData() {
     if (process.env.NODE_ENV === 'default') {
       return axios.get(`preview.json`, this.ROOTURL());
     } else {

@@ -34,11 +34,9 @@ module.exports = {
       {
         test: /\.js$/,
         use: {
-          loader: 'babel-loader',
-          options: {
-            // cacheDirectory: true
-          }
-        }
+          loader: 'babel-loader'
+        },
+        exclude: /node_modules/
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -72,7 +70,7 @@ module.exports = {
         }
       },
       {
-        test: /\.(html|ejs)$/,
+        test: /\.(html)$/,
         loader: 'underscore-template-loader',
         query: {
           engine: 'underscore'
