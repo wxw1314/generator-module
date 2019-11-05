@@ -39,18 +39,18 @@
 在{workplace}/config/index.js中配置默认参数
 
 ```javascript
-// 其中的devUrl，devUrl为访问cms接口的地址，为cms接口地址，pubilcUrl为静态文件路径，wid为cms配置的网站id，主要修改这三个参数即可
+// 其中的devUrl，devUrl为访问cms接口的地址，为cms接口地址，publicUrl为静态文件路径，wid为cms配置的网站id，主要修改这三个参数即可
 
 // 开发环境的配置路径 config.dev
 {
   devUrl: 'http://120.92.182.196/',
-  pubilcUrl: 'http://120.92.182.196/public/upload/overseas/',
+  publicUrl: 'http://120.92.182.196/public/upload/overseas/',
   wid,
 }
 // 正式环境的配置路径 config.build
 {
   devUrl: 'http://120.92.182.196/',
-  pubilcUrl: 'http://120.92.182.196/public/upload/overseas/',
+  publicUrl: 'http://120.92.182.196/public/upload/overseas/',
   wid,
 }
 ```

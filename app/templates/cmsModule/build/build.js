@@ -15,7 +15,7 @@ async function buildWeb() {
     config.build.wid,
     config.build.buildUrl,
     config.build.devUrl,
-    config.build.pubilcUrl,
+    config.build.publicUrl,
     config.build.catalogLink,
     config.build.root
   );
