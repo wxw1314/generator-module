@@ -1,6 +1,6 @@
 {
   "name": "generator-cms-module",
-  "version": "1.2.20",
+  "version": "1.2.22",
   "description": "cms模板",
   "files": [
     "app"
@@ -15,6 +15,7 @@
   "author": "wxw婉 <1420925256@qq.com>",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.19.0",
     "yeoman-generator": "^3.2.0"
   }
 }

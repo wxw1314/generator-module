@@ -1,5 +1,5 @@
 {
-  "id": 3,
+  "id": <%- templatId %>,
   "name": "模板名称",
   "config": "index",
   "is_overSea": true,
@@ -29,18 +29,28 @@
     }
   ],
   "settings": [
-    {"name":"youtubeID","config":"youtube","setConfig":[
-      {"name":"ID","config":{
-        "name":"youtube",
-        "content":"",
-        "display":true
-      }},
-      {"name":"图片","config":{
-        "name":"img",
-        "content":"",
-        "display":false
-      }}
-    ]}
+    {
+      "name": "youtubeID",
+      "config": "youtube",
+      "setConfig": [
+        {
+          "name": "ID",
+          "config": {
+            "name": "youtube",
+            "content": "",
+            "display": true
+          }
+        },
+        {
+          "name": "图片",
+          "config": {
+            "name": "img",
+            "content": "",
+            "display": false
+          }
+        }
+      ]
+    }
   ],
   "otherSettings": [
     {
