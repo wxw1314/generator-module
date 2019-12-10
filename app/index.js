@@ -17,6 +17,13 @@ module.exports = class extends Generator {
       },
       {
         type: "input",
+        name: "projectDescript",
+        message: "输入项目描述",
+        store: true,
+        default: "模板描述"
+      },
+      {
+        type: "input",
         name: "projectAuthor",
         message: "项目开发者",
         store: true,
@@ -27,6 +34,22 @@ module.exports = class extends Generator {
         name: "projectVersion",
         message: "项目版本号",
         default: "0.0.1"
+      },
+      {
+        type: "list",
+        name: "is_overSea",
+        message: "请选择国内或者海外",
+        choices: [
+          {
+            name: "国内模板",
+            value: false
+          },
+          {
+            name: "海外模板",
+            value: true,
+            checked: true // 默认选中
+          }
+        ]
       }
     ];
     return this.prompt(questions).then(
@@ -103,7 +126,20 @@ module.exports = class extends Generator {
       this.templatePath("_config.json"),
       this.destinationPath("config.json"),
       {
-        templatId: this.templatId
+        templatId: this.templatId,
+        projectName: this.projectName,
+        is_overSea: this.is_overSea,
+        projectVersion: this.projectVersion
+      }
+    );
+    this.fs.copyTpl(
+      this.templatePath("_package.json"),
+      this.destinationPath("package.json"),
+      {
+        projectName: this.projectName,
+        projectAuthor: this.projectAuthor,
+        projectVersion: this.projectVersion,
+        projectDescript: this.projectDescript
       }
     );
   }

@@ -1,7 +1,7 @@
 {
-  "name": "name",
-  "version": "1.0.1",
-  "description": "模板描述",
+  "name": "<%= projectName %>",
+  "version": "<%=projectVersion%>",
+  "description": "<%=projectDescript%>",
   "main": "index.js",
   "scripts": {
     "build": "node build/build.js",
@@ -59,6 +59,6 @@
     "iOS 7",
     "last 3 iOS versions"
   ],
-  "author": "wxw婉 <1420925256@qq.com>",
+  "author": "<%=projectAuthor%>",
   "license": "ISC"
 }

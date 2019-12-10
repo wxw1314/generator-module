@@ -1,9 +1,9 @@
 {
   "id": <%- templatId %>,
-  "name": "模板名称",
+  "name": "<%= projectName%>",
   "config": "index",
-  "is_overSea": true,
-  "version": "1.0.0",
+  "is_overSea": <%- is_overSea %>,
+  "version": "<%= projectVersion%>",
   "article": [
     {
       "name": "活动规则",
